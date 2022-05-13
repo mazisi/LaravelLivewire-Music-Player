@@ -1,0 +1,36 @@
+<div class="col-12" wire:loading.class="disable-page">
+    <div class="sign">
+      <div class="sign__content">
+        <form wire:submit.prevent='store' class="sign__form">
+          <a href="/" class="sign__logo">
+            <img src="{{ asset('public/assets/img/logo.svg') }}" alt="">
+          </a>
+
+          <div class="sign__group">
+            <input wire:model.defer='password' type="password" class="sign__input" placeholder="New Password">
+            @error('password')<p class="text-danger">{{ $message }}</p>@enderror
+          </div>
+          <div class="sign__group">
+            <input wire:model.defer='password_confirmation' type="password" class="sign__input" placeholder="Confirm password">
+            @error('password_confirmation')<p class="text-danger">{{ $message }}</p>@enderror
+          </div>
+          <button class="sign__btn" type="submit">Reset</button>
+          <div wire:loading>
+              <h4>Loading...</h4>
+        </div>
+        <div class="text-danger">
+            @if(session()->has('error'))
+                {{ session('error') }}
+            @endif
+        </div>
+        <div class="text-success">
+            @if(session()->has('error'))
+            <span class="sign__text">{{ session('message') }}</span>
+            @endif
+        </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+
